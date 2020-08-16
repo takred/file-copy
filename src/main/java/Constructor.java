@@ -51,8 +51,10 @@ public class Constructor {
                     break;
                 }
                 int buf = in.read(mass);
-                System.out.println(buf);
-                out.write(mass, 0, buf);
+                if (buf == -1) {
+                    break;
+                }
+                    out.write(mass, 0, buf);
             }
             out.close();
         }
