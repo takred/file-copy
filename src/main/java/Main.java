@@ -18,7 +18,8 @@ public class Main {
 //        constructor.constructorPiece("Install_ESO.exe");
 //        constructor.constructorFile("Install_ESO.exe", "NEW_Install_ESO.exe");
 //        constructor.constructorFile("Install_ESO.exe", "NEW_Install_ESO.exe");
-        constructor.constructorTwoHalfFile("Green.Book.avi", 102400000);
+//        constructor.constructorTwoHalfFile("Green.Book.avi", 102400000);
+        constructor.constructorHalfFile("Green.Book.avi", 87000000, 132400000);
 
 //        while (true) {
 //            int element = in2.read();

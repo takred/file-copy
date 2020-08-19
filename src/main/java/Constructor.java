@@ -59,4 +59,41 @@ public class Constructor {
             out.close();
         }
     }
+
+    public void constructorHalfFile(String fileName, int bufferSize, long pieceFileSize) throws IOException {
+        InputStream in = new FileInputStream(fileName);
+        byte[] mass = new byte[bufferSize];
+        int buf = 0;
+        for (int i = 0; true; i++) {
+            File file = new File(fileName + "_" + i);
+            if (buf == -1) {
+                break;
+            }
+            OutputStream out = new FileOutputStream(fileName + "_" + i);
+            long recordingVolume = 0;
+            while (true) {
+                recordingVolume = recordingVolume + bufferSize;
+                if (pieceFileSize < recordingVolume) {
+                    byte[] mass2 = new byte[(int) (bufferSize - (recordingVolume - pieceFileSize))];
+                    buf = in.read(mass2);
+                    if (buf == -1) {
+                        break;
+                    }
+                    System.out.println(buf);
+                    out.write(mass2, 0, buf);
+                    break;
+                }
+                buf = in.read(mass);
+                if (buf == -1) {
+                    break;
+                }
+                out.write(mass, 0, buf);
+            }
+            out.close();
+            long fileSize = Files.size(Paths.get(fileName + "_" + i));
+            if (fileSize == 0) {
+                file.delete();
+            }
+        }
+    }
 }
