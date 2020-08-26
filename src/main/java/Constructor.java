@@ -22,10 +22,11 @@ public class Constructor {
 
     public void constructorFile(String filePieceName, String fileName) throws IOException {
         OutputStream out = new FileOutputStream(fileName);
-        byte[] mass = new byte[10240000];
+//        byte[] mass = new byte[10240000];
         int i = 0;
         while (new File(filePieceName + "_" + i).exists()) {
             InputStream in = new FileInputStream(filePieceName + "_" + i);
+            byte[] mass = new byte[(int) Files.size(Paths.get(filePieceName + "_" + i))];
             int buf = in.read(mass);
             out.write(mass, 0, buf);
             in.close();
@@ -65,11 +66,11 @@ public class Constructor {
         byte[] mass = new byte[bufferSize];
         int buf = 0;
         for (int i = 0; true; i++) {
-            File file = new File(fileName + "_" + i);
+            File file = new File("Green.Book.avi" + "_" + i);
             if (buf == -1) {
                 break;
             }
-            OutputStream out = new FileOutputStream(fileName + "_" + i);
+            OutputStream out = new FileOutputStream("Green.Book.avi" + "_" + i);
             long recordingVolume = 0;
             while (true) {
                 recordingVolume = recordingVolume + bufferSize;
@@ -90,7 +91,7 @@ public class Constructor {
                 out.write(mass, 0, buf);
             }
             out.close();
-            long fileSize = Files.size(Paths.get(fileName + "_" + i));
+            long fileSize = Files.size(Paths.get("Green.Book.avi" + "_" + i));
             if (fileSize == 0) {
                 file.delete();
             }

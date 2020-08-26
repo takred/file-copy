@@ -19,7 +19,11 @@ public class Main {
 //        constructor.constructorFile("Install_ESO.exe", "NEW_Install_ESO.exe");
 //        constructor.constructorFile("Install_ESO.exe", "NEW_Install_ESO.exe");
 //        constructor.constructorTwoHalfFile("Green.Book.avi", 102400000);
-        constructor.constructorHalfFile("Green.Book.avi", 87000000, 132400000);
+        long startTime = java.lang.System.currentTimeMillis();
+//        constructor.constructorHalfFile("D:\\Users\\Sverk\\Documents\\Green.Book.avi", 87000000, 132400000);
+        constructor.constructorFile("Green.Book.avi", "NEW_Green.Book.avi");
+        long endTime = java.lang.System.currentTimeMillis();
+        System.out.println(endTime - startTime);
 
 //        while (true) {
 //            int element = in2.read();
